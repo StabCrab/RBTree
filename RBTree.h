@@ -8,7 +8,6 @@ class RBtree {
     class Node{
     public:
         Node(const size_t key, const T value) : key(key), value(value) {};
-
         const size_t key;
         T value;
         Node *left = nullptr, *right = nullptr;
@@ -234,11 +233,11 @@ typename RBtree<T>::Node &RBtree<T>::privateFind(std::size_t key, Node *currentN
     }
     else if (currentNode->key > key)
     {
-        privateFind(key, currentNode->left);
+        return privateFind(key, currentNode->left);
     }
     else if (currentNode->key < key, currentNode->left)
     {
-        privateFind(key, currentNode->right);
+        return privateFind(key, currentNode->right);
     }
     else throw std::invalid_argument("Key not found");
 }
